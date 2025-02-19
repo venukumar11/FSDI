@@ -1,6 +1,24 @@
 import java.util.*;
 class TicketBooking 
 {
+	public static void remainingTickets(char ch[][])
+	{
+		int countR=0,countB=0;
+		for (int i=0;i<ch.length;i++)
+		{
+			for (int j=0;j<ch[i].length ;j++ )
+			{
+				if (ch[i][j]!='X')
+				{
+					countR++;
+				}
+				else 
+					countB++;
+			}
+		}
+		System.out.println("Remaining Seats: "+countR);
+		System.out.println("Booked Seats: "+countB);
+	}
 	public static void bookTicket(char ch[][],int r,int c)
 	{
 		if (r>=0 && r<ch.length && c>=0 && c<ch[0].length)
@@ -33,17 +51,20 @@ class TicketBooking
 		{
 			System.out.println("1.Book Ticket");
 			System.out.println("2.Display available tickets");
-			System.out.println("3.Exit");
+			System.out.println("3.To know remainig tickets");
+			System.out.println("4.Exit");
 			int choice=s.nextInt();
 			switch(choice)
 			{
 				case 1:
 					System.out.println("Enter required seat's row and col");
 					bookTicket(ch,s.nextInt(),s.nextInt());
+				case 3:
+					remainingTickets(ch);
 				case 2:
 					displayTicket(ch);
 					break;
-				case 3:
+				case 4:
 					flag=false;
 					break;
 				default:
